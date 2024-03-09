@@ -1,6 +1,7 @@
 """
 hola
-"""#declaracion
+"""
+#declaracion
 orden=0
 #datos
 print("menu:")
