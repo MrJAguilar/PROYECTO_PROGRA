@@ -1,6 +1,5 @@
 """
 hola
-<<<<<<< Updated upstream
 """
 #declaracion
 orden=0
@@ -25,9 +24,6 @@ else:
             orden=int(input("digite la opcion del menu que desea ordenar"))
             print("orden recibida en la cocina")
             print("su orden estara lista en 5 minutos")
-=======
-
-"""
 
 
 #Declaracion de variables
@@ -65,13 +61,3 @@ total_Cuenta=total_Cuenta+precio_Mesas #Acumulador
 #Fuera del Bucle
 
 print("La factura en total  ", total_Cuenta)
-
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes
