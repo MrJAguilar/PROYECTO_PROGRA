@@ -10,8 +10,6 @@ Geovanna Castro Sanchez
 
 Univesidad Fidelitas
 """
-
-
 #Declaracion de variables
 descuento= 0
 num_Mesas= 0
@@ -19,18 +17,17 @@ precio_Mesas= 0
 total_Cuenta= 0
 orden=0
 
-#datos
-print("menu:")
-print("1.casado")
-print("2.olla de carne")
-print("3.costilla a la diabla")
-
+#Datos
+print("Menú:")
+print("1. Casado")
+print("2. Olla de carne")
+print("3. Costilla a la diabla")
 
 pedidos=int(input("cuantas ordenes desea realizar:"))
 if pedidos==1:
-    orden=int(input("digite la opcion del menu que desea ordenar"))
-    print("orden recibida en la cocina")
-    print("su orden estara lista en 5 minutos")
+    orden=int(input("Digite la opcion del menu que desea ordenar"))
+    print("Orden recibida en la cocina")
+    print("Su orden estará lista en 5 minutos")
 
 else:
     if pedidos==2:
@@ -42,7 +39,6 @@ else:
             orden=int(input("digite la opcion del menu que desea ordenar"))
             print("orden recibida en la cocina")
             print("su orden estara lista en 5 minutos")
-
 
 #Solicitud de datos
 num_Mesas=int(input("Indique la cantidad de mesas"))
