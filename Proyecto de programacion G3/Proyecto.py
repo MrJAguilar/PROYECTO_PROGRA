@@ -20,9 +20,8 @@ print("1. Casado")
 print("2. Olla de carne")
 print("3. Costilla a la diabla")
 
-# Pedidos
+# Solicitar órdenes
 pedidos = int(input("¿Cuántas órdenes desea realizar? "))
-
 for _ in range(pedidos):
     orden = int(input("Digite la opción del menú que desea ordenar: "))
     print("Orden recibida en la cocina. Su orden estará lista en 5 minutos.")
@@ -33,7 +32,6 @@ num_mesas = int(input("Indique la cantidad de mesas: "))
 # Bucle para solicitar y acumular
 for i in range(num_mesas):
     precio_mesa = float(input(f"¿Cuánto cuesta la mesa {i + 1}? "))
-    
     # Condición de precio
     if precio_mesa <= 7500:
         descuento = precio_mesa * 0.30
