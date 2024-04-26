@@ -4,7 +4,7 @@ V.0.1
 """
 
 # Base de datos de usuarios (simulada)
-base_de_datos_usuarios = {
+baseDeDatosUsuarios = {
     "usuario1": "contrasenia1",
     "usuario2": "contrasenia2",
     "usuario3": "contrasenia3"
@@ -16,7 +16,7 @@ def login():
     contrasenia = input("Ingrese su contraseña: ")
 
     # Verificar si las credenciales son válidas
-    if usuario in base_de_datos_usuarios and base_de_datos_usuarios[usuario] == contrasenia:
+    if usuario in baseDeDatosUsuarios and baseDeDatosUsuarios[usuario] == contrasenia:
         print("Inicio de sesión exitoso. Bienvenido,", usuario)
     else:
         print("Credenciales inválidas. Por favor, inténtelo de nuevo.")
