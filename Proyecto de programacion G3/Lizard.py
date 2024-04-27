@@ -75,7 +75,7 @@ def pedido_mesas_comidas(clientes):
         precio_mesas = int(input("Ingrese el monto total para las mesas: "))  # Precio total para todas las mesas
 
         # Condición de precio
-        if precio_mesas < 1500 * num_mesas:
+        if precio_mesas < 1000 * num_mesas:
             print("El monto total debe ser igual o mayor al precio de las mesas.")
             return
         
