@@ -44,15 +44,15 @@ def login():
 def valideVacios(valor):
     return valor.strip() != ""
 
-def gestion_pedidos():
-    print("Gestión de pedidos en proceso...")
+def gestion_datos():
+    print("Gestión de datos en proceso...")
     cliente = ingresar_cliente()
     print("\nDatos del cliente:")
     print("Cédula:", cliente.cedula)
     print("Nombre:", cliente.nombre)
 
-def facturacion():
-    print("Facturación en proceso...")
+def pedido_mesas_comidas():
+    print("Pedido de mesas y comidas en proceso...")
     
     # Total de mesas reservadas
     total_mesas = reservacion_mesas()
@@ -62,6 +62,12 @@ def facturacion():
     
     # Total general
     total_general = total_mesas + total_ventas
+    
+    # Datos de la factura
+    cliente = ingresar_cliente()
+    print("\nFactura:")
+    print("Cliente:", cliente.nombre)
+    print("Cédula:", cliente.cedula)
     print("Total general: $", total_general)
 
 def reservacion_mesas():
@@ -134,26 +140,20 @@ def main():
     while continuar:
         # Menú principal
         print("\n--- Menú ---")
-        print("1. Reservación de mesas")
-        print("2. Gestión de pedidos")
-        print("3. Facturación")
-        print("4. Realizar ventas")
-        print("5. Salir")
+        print("1. Gestión de datos")
+        print("2. Pedido de mesas y comidas")
+        print("3. Salir")
         
         opc = input("Seleccione una opción: ")
 
         if valideVacios(opc):
             opc = int(opc)
-            if opc >= 1 and opc <= 5:
+            if opc >= 1 and opc <= 3:
                 if opc == 1:
-                    reservacion_mesas()
+                    gestion_datos()
                 elif opc == 2:
-                    gestion_pedidos()
+                    pedido_mesas_comidas()
                 elif opc == 3:
-                    facturacion()
-                elif opc == 4:
-                    realizar_ventas()
-                elif opc == 5:
                     print("Hasta luego")
                     continuar = False
                 else:
