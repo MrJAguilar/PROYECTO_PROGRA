@@ -1,14 +1,4 @@
-"""
-Proyecto de programación
-
-Estudiantes encargados:
-Jefferson Aguilar Mendoza
-Juan Pablo Vergara Cholele
-Jonatan Pereira Guevara
-Geovanna Castro Sanchez
-
-Universidad Fidelitas
-"""
+import datetime
 
 # Base de datos de usuarios (simulada)
 base_de_datos_usuarios = {
@@ -46,19 +36,19 @@ def valideVacios(valor):
 def gestion_datos():
     print("Gestión de datos en proceso...")
     cantidad_clientes = int(input("Ingrese la cantidad de clientes: "))
-    clientes = []  # Lista para almacenar los clientes registrados
+    clientes = []  
     for i in range(cantidad_clientes):
         print("\nCliente", i+1)
         cliente = ingresar_cliente()
-        clientes.append(cliente)  # Agregar cliente a la lista
+        clientes.append(cliente)  
         print("\nDatos del cliente:")
         print("Cédula:", cliente.cedula)
         print("Nombre:", cliente.nombre)
-    return clientes  # Devolver la lista de clientes registrados
+    return clientes
 
 def pedido_mesas_comidas(clientes):
     print("Pedido de mesas y comidas en proceso...")
-    
+
     # Verificar si el cliente está registrado
     nombre_cliente = input("Ingrese el nombre del cliente: ")
     cedula_cliente = input("Ingrese la cédula del cliente: ")
@@ -69,37 +59,68 @@ def pedido_mesas_comidas(clientes):
             break
     
     if cliente_encontrado:
-        # Total de mesas reservadas
-        num_mesas = int(input("Indique la cantidad de mesas a reservar: "))
-        precio_mesas = int(input("Ingrese el monto total para las mesas: "))  # Precio total para todas las mesas
-
-        # Condición de precio
-        if precio_mesas < 1000 * num_mesas:
-            print("El monto total debe ser igual o mayor al precio de las mesas.")
-            return
+        # Lista de mesas disponibles
+        mesas_disponibles = list(range(1, 13))
         
+        # Solicitar número de mesa al cliente
+        while True:
+            num_mesa = int(input("Ingrese el número de mesa que desea reservar (1-12): "))
+        
+            # Verificar si la mesa está disponible
+            if num_mesa in mesas_disponibles:
+                mesas_disponibles.remove(num_mesa)
+                precio_mesa = 1000  # Precio de la mesa
+                total_cuenta = precio_mesa  # Total de la cuenta
+                print("¡Mesa reservada exitosamente!")
+                break
+            else:
+                print("Lo siento, esta mesa ya está reservada.")
+                continue
+        
+        # Aplicar descuentos según el precio de la mesa
+        descuento = 0
+        if total_cuenta <= 7500:
+            descuento = total_cuenta * 0.30
+            total_cuenta -= descuento
+            print(f"Esta reservación tiene un descuento de {descuento}")
+        elif total_cuenta > 11000:
+            descuento = total_cuenta * 0.10
+            total_cuenta -= descuento
+            print(f"Esta reservación tiene un descuento de {descuento}")
+
+        # Fecha y hora de reservación
+        fecha_reserva = input("Ingrese la fecha de la reserva (YYYY-MM-DD): ")
+        hora_reserva = input("Ingrese la hora de la reserva (HH:MM): ")
+
         # Total de ventas realizadas
         total_ventas = realizar_ventas()
         
-        # Total general
-        total_general = precio_mesas + total_ventas
+        # Cálculo del impuesto
+        impuesto = total_cuenta * 0.13
         
-        # Datos de la factura
+        # Total general con impuestos
+        total_general = total_cuenta + total_ventas + impuesto
+        
         print("\nFactura:")
         print("Cliente:", nombre_cliente)
         print("Cédula:", cedula_cliente)
+        print("Fecha de reserva:", fecha_reserva)
+        print("Hora de reserva:", hora_reserva)
+        print("Número de mesa reservada:", num_mesa)
+        print("Total sin impuestos: $", total_cuenta)
+        print("Impuesto (13%): $", impuesto)
         print("Total general: $", total_general)
+
+        print("\n¡Su comida y mesa están listas y reservadas!")
     else:
         print("Este cliente no se encuentra disponible. Vuelva a intentarlo.")
 
 def realizar_ventas():
     total_venta = 0
-    opcion = ""  # Se inicializa la variable opcion
+    opcion = ""  
 
-    # Mostrar menú de productos
     mostrar_menu_productos()
 
-    # Realizar ventas
     while opcion != "0":
         opcion = input("Seleccione el producto (1/2/3) o '0' para finalizar la venta: ")
         productos = {
@@ -117,19 +138,16 @@ def realizar_ventas():
         else:
             print("Opción inválida.")
 
-    # Mostrar total de la venta y generar factura
     print("El total de las ventas es: $", total_venta)
     return total_venta
 
 def mostrar_menu_productos():
-    # Menú de productos y precios
     productos = {
         "1": {"nombre": "Casado", "precio": 10},
         "2": {"nombre": "Olla de carne", "precio": 8},
         "3": {"nombre": "Costilla a la diabla", "precio": 12}
     }
 
-    # Mostrar el menú de productos
     print("Menú de productos:")
     for clave in productos:
         producto = productos[clave]
@@ -137,9 +155,8 @@ def mostrar_menu_productos():
 
 def main():
     continuar = True
-    clientes = []  # Lista para almacenar los clientes registrados
+    clientes = []  
     while continuar:
-        # Menú principal
         print("\n--- Menú ---")
         print("1. Gestión de datos")
         print("2. Pedido de mesas y comidas")
@@ -151,7 +168,7 @@ def main():
             opc = int(opc)
             if opc >= 1 and opc <= 3:
                 if opc == 1:
-                    clientes = gestion_datos()  # Actualizar la lista de clientes registrados
+                    clientes = gestion_datos()  
                 elif opc == 2:
                     pedido_mesas_comidas(clientes)
                 elif opc == 3:
